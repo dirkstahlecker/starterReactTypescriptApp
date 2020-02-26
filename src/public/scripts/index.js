@@ -2,6 +2,12 @@
  *                          Fetch and display users
  ******************************************************************************/
 
+window.onLoad = function () {
+    console.log("ON LOAD");
+    httpGet("/api/getWeather").then(response => console.log(response));
+};
+
+
 displayUsers();
 
 
@@ -60,6 +66,11 @@ function getUserDisplayEle(user) {
 document.addEventListener('click', function (event) {
     event.preventDefault();
     var ele = event.target;
+    if (ele.matches("#test_btn"))
+    {
+        console.log("Button click");
+        httpGet("/api/getWeather").then(response => console.log(response));
+    }
     if (ele.matches('#add-user-btn')) {
         addUser();
     } else if (ele.matches('.edit-user-btn')) {
